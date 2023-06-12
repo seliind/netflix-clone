@@ -6,9 +6,14 @@
         <div class="content">
             <div class="card">
                 <h1>Movie's Name</h1>
-                <p>2023</p>
+                <p class="year">2023</p>
                 <p>Something here and maybe more</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum.</p>
+                <div class="buttons-container">
+                    <button class="play-button">Play</button>
+                    <button>Add my list</button>
+                    <button>Favorite</button>
+                </div>
             </div>
             <div class="about">
                 <h1>About</h1>
@@ -23,12 +28,6 @@
             <img src="http://i.annihil.us/u/prod/marvel/i/mg/9/b0/4c7d666c0e58a.jpg" alt="movie-banner">
         </div>
     </div>
-    <div class="buttons-container">
-        <button>Play</button>
-        <button>Add my list</button>
-        <button>More like this</button>
-        <button>Not interested</button>
-    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -38,6 +37,11 @@
     grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     padding-top: 90px;
+    margin-bottom: 30px;
+
+    .year {
+        font-weight: 500;
+    }
 
     .img-container {
         display: flex;
@@ -67,38 +71,64 @@
             padding-left: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+
+            .buttons-container {
+                margin-top: 40px;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: start;
+
+                button {
+                    cursor: pointer;
+                    border-radius: 10px;
+                    border: none;
+                    background: rgb(42, 41, 41);
+                    color: white;
+                    font-weight: 600;
+                    font-size: small;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 18px;
+                    padding-inline: 40px;
+                }
+
+                .play-button {
+                    animation-name: changeColor;
+                    animation-duration: 10s;
+                }
+                button:hover{
+                    transform: rotate(5deg);
+                }
+
+                @keyframes changeColor {
+                    0% {
+                        background-color: #e50914;
+                    }
+
+                    25% {
+                        background-color: purple;
+                    }
+
+                    50% {
+                        background-color: blue;
+                    }
+
+                    100% {
+                        background-color: #357C3C;
+                    }
+                }
+            }
         }
 
         .about {
+            border-top: 1px solid #e8e8e8;
             padding-left: 20px;
-            background: #e8e8e8;
             border-radius: 10px;
             margin-bottom: 20px;
         }
 
     }
 }
-
-.buttons-container {
-    margin-top: 5px;
-    padding: 20px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: start;
-    margin-left: 26px;
-
-    button {
-        border-radius: 10px;
-        border: none;
-        background: rgb(42, 41, 41);
-        color: white;
-        font-weight: 600;
-        font-size: small;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-
-    }
-}</style>
+</style>

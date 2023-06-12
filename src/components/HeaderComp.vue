@@ -24,14 +24,13 @@
     height: 70px;
     width: 100%;
     position: fixed;
-    background: #e8e8e8;
+    background: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-right: 10px;
     padding-left: 10px;
-    color: black;
-    border-bottom: 1px solid #e8e8e8;
+    color: #e8e8e8;
 
     .logo {
         display: flex;
@@ -63,7 +62,6 @@
             object-fit: cover;
             height: 50px;
             border-radius: 100%;
-            border: 1.5px solid black;
         }
     }
 }

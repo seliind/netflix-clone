@@ -25,8 +25,8 @@
 .footer {
     width: 100%;
     height: 70px;
-    background: black;
-    color: #fff;
+    background: #e8e8e8;
+    color: rgb(70, 70, 70);
     display: flex;
     align-items: center;
     justify-content: space-between;

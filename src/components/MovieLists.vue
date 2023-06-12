@@ -6,7 +6,7 @@
     <div class="banner">
         <div class="banner-img">
             <div class="contents">
-                <h1>MARVEL'S HERE</h1>
+                <h1>MARVEL COMİCS</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, necessitatibus quae? Quod nulla velit
                     veritatis perferendis suscipit.</p>
                 <div class="banner-buttons">
@@ -18,7 +18,7 @@
     </div>
 
     <div class="comics-list">
-        <h1>ALL THE COMİCS</h1>
+        <h1>All Comics</h1>
         <ul>
             <li>
                 <RouterLink to="/movie-details">
@@ -74,6 +74,10 @@
         <ul>
             <li>
                 <img src="https://picsum.photos/200" alt="movie-img">
+            </li>
+            <li>
+                <img src="https://picsum.photos/200" alt="movie-img">
+
             </li>
             <li>
                 <img src="https://picsum.photos/200" alt="movie-img">
@@ -171,6 +175,7 @@
 
     h1 {
         padding-left: 20px;
+        margin-bottom: 20px;
         font-size: 2rem;
     }
 
@@ -194,18 +199,19 @@
     li:hover {
         transform: translateY(-0.5rem);
         transition-delay: 0.2s;
+        transition-duration: 0.4s;
     }
 }
 
 .characters {
-    background-color: #e8e8e8;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 110px;
+    text-align: center;
 
     h1 {
         padding-left: 20px;
         font-size: 2rem;
+        margin-bottom: 30px;
     }
 
     ul {
@@ -213,6 +219,7 @@
         margin-top: 10px;
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-around;
         gap: 20px;
         font-size: small;
      li{

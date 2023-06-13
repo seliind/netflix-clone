@@ -1,9 +1,11 @@
 import './assets/main.css'
 import { createApp } from 'vue'
-import App from './App.vue'
-import MovieLists from "./components/MovieLists.vue";
-import MovieDetails from "./components/MovieDetails.vue";
 import { createRouter, createWebHashHistory } from 'vue-router';
+import App from './App.vue'
+import MovieLists from "./components/pages/MovieLists.vue";
+import MovieDetails from "./components/pages/MovieDetails.vue";
+import store from './store/store';
+
 
 
 const routes = [
@@ -16,4 +18,4 @@ const routes = [
     routes, 
   })
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(store).mount('#app');

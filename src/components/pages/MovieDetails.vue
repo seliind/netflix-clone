@@ -92,6 +92,8 @@
                     justify-content: center;
                     padding: 18px;
                     padding-inline: 40px;
+                    outline: none;
+                    outline-offset: 1px;
                 }
 
                 .play-button {
@@ -99,7 +101,9 @@
                     animation-duration: 10s;
                 }
                 button:hover{
-                    transform: rotate(5deg);
+                    outline: 2px solid black;
+                    outline-offset: 3px;
+                    background: rgb(32, 31, 31);
                 }
 
                 @keyframes changeColor {

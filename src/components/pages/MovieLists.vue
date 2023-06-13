@@ -1,5 +1,9 @@
 <script>
+import AllComics from "../AllComics.vue"
 
+export default {
+    components: { AllComics },
+}
 </script>
 
 <template>
@@ -17,57 +21,7 @@
         </div>
     </div>
 
-    <div class="comics-list">
-        <h1>All Comics</h1>
-        <ul>
-            <li>
-                <RouterLink to="/movie-details">
-                    <img src="https://picsum.photos/200/300" alt="movie-img">
-                    <div>
-                        <h2>Movie's Name</h2>
-                        <p>dsfsdfdsdsfdfsd</p>
-                    </div>
-                </RouterLink>
-
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-        </ul>
-
-    </div>
+    <AllComics />
 
     <div class="characters">
         <h1>Check Out the Characters!</h1>
@@ -101,7 +55,7 @@
     overflow: hidden;
 
     .banner-img {
-        background-image: url("../assets/images/banner.jpg");
+        background-image: url("../../assets/images/banner.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         transition: all .7s;
@@ -170,39 +124,6 @@
     display: block;
 }
 
-.comics-list {
-    margin-top: 20px;
-
-    h1 {
-        padding-left: 20px;
-        margin-bottom: 20px;
-        font-size: 2rem;
-    }
-
-    ul {
-        list-style: none;
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    li {
-        cursor: pointer;
-        transition: ease-in-out;
-
-        img {
-            border-radius: 5px;
-        }
-    }
-
-    li:hover {
-        transform: translateY(-0.5rem);
-        transition-delay: 0.2s;
-        transition-duration: 0.4s;
-    }
-}
-
 .characters {
     margin-top: 50px;
     margin-bottom: 110px;
@@ -222,13 +143,14 @@
         justify-content: space-around;
         gap: 20px;
         font-size: small;
-     li{
-        a{
-            text-decoration: none !important;
-            color: black;
-            cursor: pointer;
+
+        li {
+            a {
+                text-decoration: none !important;
+                color: black;
+                cursor: pointer;
+            }
         }
-     }
     }
 
     img {

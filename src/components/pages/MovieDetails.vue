@@ -1,19 +1,21 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import axios from 'axios';
-import { onMounted} from 'vue'
+import { onMounted, ref } from 'vue'
 
 const route = useRoute();
-console.log(route.params.id)
+const movieId = route.params.id
+const movieDetails= ref()
 
 onMounted(() => {
     fetchMovieDetails();
 })
 
 const fetchMovieDetails = async () => {
-    await axios.get("https://gateway.marvel.com/v1/public/comics/103078?apikey=a877cea7ec05a22e0e55707d1438c65c")
+    await axios.get(`https://gateway.marvel.com/v1/public/comics/${movieId}`)
         .then((response) => {
-            console.log(response.data.data)
+            movieDetails.value = response.data.data.results
+            console.log(movieDetails)
         })
         .catch((error) => {
             console.log(error)
@@ -22,10 +24,13 @@ const fetchMovieDetails = async () => {
 </script>
 
 <template>
-    <div class="movie-details">
+    <div v-if="movieDetails === null">
+    Loading...
+    </div>
+    <div v-else v-for="movie in movieDetails" :key="movie.id" class="movie-details">
         <div class="content">
             <div class="card">
-                <h1>Movie's Name</h1>
+                <h1>{{ movie.title }}</h1>
                 <p class="year">2023</p>
                 <p>Something here and maybe more</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum.</p>
@@ -37,16 +42,16 @@ const fetchMovieDetails = async () => {
             </div>
             <div class="about">
                 <h1>About</h1>
-                {{ $route.params.id }}
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit eveniet sint officiis
-                    commodi atque placeat autem dolorem minima fugiat voluptas ex debitis, temporibus incidunt? Consequuntur
-                    quo voluptate illum distinctio.
+                <p v-if="movie.description !== null">
+                    {{ movie.description }}
+                </p>
+                <p v-else>
+                    No description available.
                 </p>
             </div>
         </div>
         <div class="img-container">
-            <img src="http://i.annihil.us/u/prod/marvel/i/mg/9/b0/4c7d666c0e58a.jpg" alt="movie-banner">
+            <img :src="`${movie.images[0].path}.jpg`" alt="movie-img">
         </div>
     </div>
 </template>
@@ -156,5 +161,4 @@ const fetchMovieDetails = async () => {
         }
 
     }
-}
-</style>
+}</style>

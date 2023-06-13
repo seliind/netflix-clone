@@ -1,68 +1,29 @@
-<script>
-export default {
-    name: "AllComics",
-    methods: {
-        fetchData() {
-    this.$store.dispatch('fetchData');
-  },
-    }
-}
+<script setup>
+import { onMounted, computed } from 'vue'
+import { useStore } from "vuex";
+
+const store = useStore();
+const comics =  computed(() => store.state.comics);
+onMounted(async () => {
+    await store.dispatch('fetchComics');
+})
 </script>
 
 <template>
     <div class="comics-list">
         <h1>All Comics</h1>
-        <div>
-            <p>Data: {{ $store.state.data }}</p>
-            <button @click="fetchData">fetch</button>
-        </div>
-        <ul>
-            <li>
-                <RouterLink to="/movie-details">
-                    <img src="https://picsum.photos/200/300" alt="movie-img">
+        <ul v-if="comics">
+             <li v-for="comic in comics" :key="comic.id">
+                <RouterLink :to="`/${comic.id}/movie-details`">
+                    <img :src="`${comic.images[0].path}.jpg`" alt="movie-img">
                     <div>
-                        <h2>Movie's Name</h2>
-                        <p>dsfsdfdsdsfdfsd</p>
+                        <h2 class="title">{{ comic.title }}</h2>
+                        <p>{{ comic.modified.slice(0,4) }}</p>
                     </div>
                 </RouterLink>
-
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
-            <li>
-                <img src="https://picsum.photos/200/300" alt="movie-img">
-                <div>
-                    <h2>Movie's Name</h2>
-                    <p>dsfsdfdsdsfdfsd</p>
-                </div>
-            </li>
+            </li> 
         </ul>
+        <p v-else>Loading...</p>
 
     </div>
 </template>
@@ -76,21 +37,38 @@ export default {
         margin-bottom: 20px;
         font-size: 2rem;
     }
+  
+    }
 
     ul {
         list-style: none;
         margin-top: 10px;
         display: flex;
+        justify-content: center;
+        align-items: centers;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 4rem;
     }
 
     li {
+        display: flex;
+        align-items: center;
+        justify-content: start;
         cursor: pointer;
         transition: ease-in-out;
 
         img {
+            height: 25rem;
             border-radius: 5px;
+        }
+        .title{
+            font-size: medium;
+            word-break: break-all;
+            width: 27vw;
+        }
+        a{
+            text-decoration: none !important;
+            color: black;
         }
     }
 
@@ -99,6 +77,6 @@ export default {
         transition-delay: 0.2s;
         transition-duration: 0.4s;
     }
-}
+
 </style>
 

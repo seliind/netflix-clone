@@ -1,4 +1,24 @@
-<script>
+<script setup>
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+import { onMounted} from 'vue'
+
+const route = useRoute();
+console.log(route.params.id)
+
+onMounted(() => {
+    fetchMovieDetails();
+})
+
+const fetchMovieDetails = async () => {
+    await axios.get("https://gateway.marvel.com/v1/public/comics/103078?apikey=a877cea7ec05a22e0e55707d1438c65c")
+        .then((response) => {
+            console.log(response.data.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+}
 </script>
 
 <template>
@@ -17,6 +37,7 @@
             </div>
             <div class="about">
                 <h1>About</h1>
+                {{ $route.params.id }}
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum.
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum reprehenderit eveniet sint officiis
                     commodi atque placeat autem dolorem minima fugiat voluptas ex debitis, temporibus incidunt? Consequuntur
@@ -100,7 +121,8 @@
                     animation-name: changeColor;
                     animation-duration: 10s;
                 }
-                button:hover{
+
+                button:hover {
                     outline: 2px solid black;
                     outline-offset: 3px;
                     background: rgb(32, 31, 31);

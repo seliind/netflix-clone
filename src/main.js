@@ -10,7 +10,7 @@ import store from './store/store';
 
 const routes = [
     { path: '/', component: MovieLists },
-    { path: '/movie-details', component: MovieDetails },
+    { path: '/:id/movie-details', component: MovieDetails },
   ]
 
   const router = createRouter({

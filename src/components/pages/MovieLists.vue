@@ -1,8 +1,9 @@
 <script>
 import AllComics from "../AllComics.vue"
+import CharactersComp from "../CharactersComp.vue"
 
 export default {
-    components: { AllComics },
+    components: { AllComics, CharactersComp },
 }
 </script>
 
@@ -22,27 +23,7 @@ export default {
     </div>
 
     <AllComics />
-
-    <div class="characters">
-        <h1>Check Out the Characters!</h1>
-        <ul>
-            <li>
-                <img src="https://picsum.photos/200" alt="movie-img">
-            </li>
-            <li>
-                <img src="https://picsum.photos/200" alt="movie-img">
-
-            </li>
-            <li>
-                <img src="https://picsum.photos/200" alt="movie-img">
-
-            </li>
-            <li>
-                <img src="https://picsum.photos/200" alt="movie-img">
-
-            </li>
-        </ul>
-    </div>
+    <CharactersComp />
 </template>
 
 <style lang="scss" scoped>
@@ -122,40 +103,5 @@ export default {
 .banner:hover .banner:before,
 .banner:focus .banner:before {
     display: block;
-}
-
-.characters {
-    margin-top: 50px;
-    margin-bottom: 110px;
-    text-align: center;
-
-    h1 {
-        padding-left: 20px;
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
-
-    ul {
-        list-style: none;
-        margin-top: 10px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 20px;
-        font-size: small;
-
-        li {
-            a {
-                text-decoration: none !important;
-                color: black;
-                cursor: pointer;
-            }
-        }
-    }
-
-    img {
-        width: 130px;
-        border-radius: 5px;
-    }
 }
 </style>

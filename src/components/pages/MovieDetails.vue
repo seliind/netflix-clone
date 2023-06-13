@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 
 const route = useRoute();
 const movieId = route.params.id
-const movieDetails= ref()
+const movieDetails = ref()
 
 onMounted(() => {
     fetchMovieDetails();
@@ -25,15 +25,24 @@ const fetchMovieDetails = async () => {
 
 <template>
     <div v-if="movieDetails === null">
-    Loading...
+        Loading...
     </div>
     <div v-else v-for="movie in movieDetails" :key="movie.id" class="movie-details">
+        <div class="background"></div>
         <div class="content">
             <div class="card">
                 <h1>{{ movie.title }}</h1>
                 <p class="year">2023</p>
-                <p>Something here and maybe more</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.</p>
+                <div class="creators"><strong>Creators:</strong>
+                    <ul>
+                        <li v-for="creator in movie.creators.items" :key="creator.role">
+                            {{ creator.name }} <span>as {{ creator.role }}</span>
+                        </li>
+                    </ul>
+
+                </div>
+
                 <div class="buttons-container">
                     <button class="play-button">Play</button>
                     <button>Add my list</button>
@@ -58,18 +67,39 @@ const fetchMovieDetails = async () => {
 
 <style lang="scss" scoped>
 .movie-details {
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     padding-top: 90px;
-    margin-bottom: 30px;
+    position: relative;
+
+    .background {
+        background-image: url("../../assets/images/marvel.webp");
+        position: absolute;
+        top: 67px;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.2;
+        z-index: -1;
+    }
 
     .year {
-        font-weight: 500;
+        font-weight: 600;
+        font-size: x-large;
+    }
+    p{
+        font-weight: 600;
+        font-size: large;
+        color: #000000;
     }
 
     .img-container {
+        position: relative;
+        z-index: 2;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -85,6 +115,8 @@ const fetchMovieDetails = async () => {
     }
 
     .content {
+        position: relative;
+        z-index: 2;
         grid-column: 1 / span 3;
         margin-left: 20px;
         padding-left: 20px;
@@ -97,6 +129,23 @@ const fetchMovieDetails = async () => {
             padding-left: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
+
+            .creators {
+                margin-top: 20px;
+                font-size: larger;
+
+                ul {
+                    li {
+                        list-style: inside;
+                        font-weight: 700;
+                        color: #3e3c3c;
+
+                        span {
+                            color: #656464;
+                        }
+                    }
+                }
+            }
 
             .buttons-container {
                 margin-top: 40px;
@@ -119,7 +168,6 @@ const fetchMovieDetails = async () => {
                     padding: 18px;
                     padding-inline: 40px;
                     outline: none;
-                    outline-offset: 1px;
                 }
 
                 .play-button {
@@ -154,11 +202,26 @@ const fetchMovieDetails = async () => {
         }
 
         .about {
-            border-top: 1px solid #e8e8e8;
+            border-top: 2px solid #e8e8e8;
             padding-left: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
         }
 
     }
-}</style>
+}
+
+@media screen and (max-width: 900px) {
+    .movie-details {
+        display: flex;
+        flex-direction: column;
+
+        .content {
+            grid-column: 1 / span 1;
+        }
+
+        .img-container {
+            background: #e8e8e8;
+            box-shadow: 10px 5px 10px rgb(154, 149, 149);
+        }
+    }
+}
+</style>

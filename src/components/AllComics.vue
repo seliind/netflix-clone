@@ -23,7 +23,7 @@ onMounted(async () => {
                 </RouterLink>
             </li> 
         </ul>
-        <p v-else>Loading...</p>
+        <p class="loading" v-else>Loading...</p>
 
     </div>
 </template>
@@ -36,6 +36,12 @@ onMounted(async () => {
         padding-left: 20px;
         margin-bottom: 20px;
         font-size: 2rem;
+    }
+    .loading{
+        text-align: center;
+        margin: 30px;
+        font-size: large;
+        font-weight: 500;
     }
   
     }

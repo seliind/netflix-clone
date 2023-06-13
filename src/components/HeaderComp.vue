@@ -20,7 +20,7 @@
 
 <style lang="scss" scoped>
 .navbar {
-    z-index: 1;
+    z-index: 50;
     height: 70px;
     width: 100%;
     position: fixed;

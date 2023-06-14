@@ -13,6 +13,8 @@ const store = new Vuex.Store({
   state: {
     comics: null,
     characters: null,
+    favorites: 0,
+    isAdded : false,
   },
   mutations: {
     setComics(state, data) {
@@ -21,9 +23,19 @@ const store = new Vuex.Store({
     setCharacters(state, data) {
       state.characters = data;
     },
+    incrementFavorites(state) {
+      state.isAdded = !state.isAdded;
+      state.favorites++;
+    },
+    decrementFavorites(state) {
+      state.isAdded = !state.isAdded;
+      if(state.favorites >0) {
+        state.favorites--;
+      }
+    }
   },
   actions: {
-    fetchComics ({ commit }) {
+    fetchComics({ commit }) {
       axios
         .get(
           "https://gateway.marvel.com/v1/public/comics?format=comic&formatType=comic&dateDescriptor=thisMonth"
@@ -35,15 +47,22 @@ const store = new Vuex.Store({
           console.error(error);
         });
     },
-    fetchCharacters ({commit}) {
-      axios.get("https://gateway.marvel.com/v1/public/characters")
-      .then((response) => {
-        commit("setCharacters", response.data.data.results);
-      })
-      .catch((error) => {
-        console.log(error)
-      });
+    fetchCharacters({ commit }) {
+      axios
+        .get("https://gateway.marvel.com/v1/public/characters")
+        .then((response) => {
+          commit("setCharacters", response.data.data.results);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
+    incrementFavorites({commit}) {
+      commit('incrementFavorites');
+    },
+    decrementFavorites({commit}) {
+      commit('decrementFavorites');
+    }
   },
 });
 

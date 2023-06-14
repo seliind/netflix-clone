@@ -17,6 +17,7 @@ export default {
                 <div class="banner-buttons">
                     <button>More</button>
                     <button>My List</button>
+
                 </div>
             </div>
         </div>

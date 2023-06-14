@@ -77,10 +77,10 @@ const fetchMovieDetails = async () => {
     .background {
         background-image: url("../../assets/images/marvel.webp");
         position: absolute;
-        top: 67px;
+        top: 0;
         left: 0;
         width: 100%;
-        min-height: 100vh;
+        height: 100%;
         background-size: cover;
         background-position: center;
         opacity: 0.2;
@@ -219,7 +219,7 @@ const fetchMovieDetails = async () => {
         }
 
         .img-container {
-            background: #e8e8e8;
+            margin-bottom: 10px;
             box-shadow: 10px 5px 10px rgb(154, 149, 149);
         }
     }

@@ -23,6 +23,8 @@
 
 <style lang="scss" scoped>
 .footer {
+    position: absolute;
+    z-index: 5;
     width: 100%;
     height: 70px;
     background: #e8e8e8;

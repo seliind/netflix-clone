@@ -10,7 +10,7 @@
         <ul class="menu">
             <li>Movies</li>
             <li>Series</li>
-            <li>Favorites</li>
+            <li>Favorites <span>5</span></li>
         </ul>
         <div class="profile">
             <img src="https://xsgames.co/randomusers/avatar.php?g=pixel" alt="" />
@@ -51,6 +51,13 @@
 
         li {
             cursor: pointer;
+            span{
+                background: white;
+                color: black;
+                margin-left: 4px;
+                padding: 5px 6px 5px 6px;
+                border-radius: 100%;
+            }
         }
     }
 

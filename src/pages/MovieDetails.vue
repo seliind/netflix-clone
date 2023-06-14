@@ -99,7 +99,7 @@ const fetchMovieDetails = async () => {
     position: relative;
 
     .background {
-        background-image: url("../../assets/images/marvel.webp");
+        background-image: url("../assets/images/marvel.webp");
         position: absolute;
         top: 0;
         left: 0;

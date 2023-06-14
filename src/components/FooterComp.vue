@@ -35,16 +35,20 @@
     width: 100%;
     height: 70px;
     background: #e8e8e8;
-    color: rgb(70, 70, 70);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: small;
-    font-weight: 500;
+
+    p {
+        font-size: small;
+        font-weight: 500;
+        color: rgb(70, 70, 70);
+    }
 
     .socials {
+        font-size: medium;
 
         ul {
             display: flex;

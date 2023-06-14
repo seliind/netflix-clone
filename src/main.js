@@ -2,8 +2,8 @@ import "./assets/main.css";
 import { createApp } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 import App from "./App.vue";
-import MovieLists from "./components/pages/MovieLists.vue";
-import MovieDetails from "./components/pages/MovieDetails.vue";
+import MovieLists from "./pages/MovieLists.vue";
+import MovieDetails from "./pages/MovieDetails.vue";
 import store from "./store/store";
 
 const routes = [

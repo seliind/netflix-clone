@@ -1,6 +1,6 @@
 <script>
-import AllComics from "../AllComics.vue"
-import CharactersComp from "../CharactersComp.vue"
+import AllComics from "../components/AllComics.vue"
+import CharactersComp from "../components/CharactersComp"
 
 export default {
     components: { AllComics, CharactersComp },
@@ -37,7 +37,7 @@ export default {
     overflow: hidden;
 
     .banner-img {
-        background-image: url("../../assets/images/banner.jpg");
+        background-image: url("../assets/images/banner.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         transition: all .7s;

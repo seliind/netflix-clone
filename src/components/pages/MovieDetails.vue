@@ -57,7 +57,7 @@ const fetchMovieDetails = async () => {
                 </h1>
                 <p class="year">2023</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis sequi debitis repellat, tempore rerum.
-                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.</p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. And it is really great, wow!</p>
                 <div class="creators"><strong>Creators:</strong>
                     <ul>
                         <li v-for="creator in movie.creators.items" :key="creator.role">
@@ -112,12 +112,12 @@ const fetchMovieDetails = async () => {
     }
 
     .year {
-        font-weight: 600;
+        font-weight: bold;
         font-size: x-large;
     }
 
     p {
-        font-weight: 600;
+        font-weight: 300;
         font-size: large;
         color: #000000;
     }

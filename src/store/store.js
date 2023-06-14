@@ -13,8 +13,7 @@ const store = new Vuex.Store({
   state: {
     comics: null,
     characters: null,
-    favorites: 0,
-    isAdded : false,
+    favorites: [],
   },
   mutations: {
     setComics(state, data) {
@@ -23,15 +22,11 @@ const store = new Vuex.Store({
     setCharacters(state, data) {
       state.characters = data;
     },
-    incrementFavorites(state) {
-      state.isAdded = !state.isAdded;
-      state.favorites++;
+    add_title(state, title) {
+      state.favorites.push(title)
     },
-    decrementFavorites(state) {
-      state.isAdded = !state.isAdded;
-      if(state.favorites >0) {
-        state.favorites--;
-      }
+    remove_title(state, title) {
+      state.favorites = state.favorites.filter(element => element !== title)
     }
   },
   actions: {
@@ -57,12 +52,12 @@ const store = new Vuex.Store({
           console.log(error);
         });
     },
-    incrementFavorites({commit}) {
-      commit('incrementFavorites');
+    add_title ({commit}, {title}) {
+     commit('add_title', title)
     },
-    decrementFavorites({commit}) {
-      commit('decrementFavorites');
-    }
+    remove_title({commit}, {title}) {
+      commit('remove_title', title)
+    },
   },
 });
 

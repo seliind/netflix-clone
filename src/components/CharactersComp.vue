@@ -8,7 +8,6 @@ const characters = computed(() => store.state.characters);
 onMounted(async () => {
     await store.dispatch("fetchCharacters");
 })
-console.log(characters)
 </script>
 
 <template>
